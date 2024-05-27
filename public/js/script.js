@@ -7,7 +7,7 @@
 		$document = $(document),
 		$window = $(window),
 		$html = $("html"),
-		$body = $("body"),
+		$body = $("#root"),
 
 		isDesktop = $html.hasClass("desktop"),
 		isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false,
@@ -61,6 +61,15 @@
 		};
 
 	// Initialize scripts that require a loaded page
+	document.addEventListener('DOMContentLoaded', ()=>{
+		setTimeout( function () {
+			console.log("fyykhcjh", document.querySelector(".preloader"))
+			document.querySelector("html").classList.add("rd-navbar-fixed-linked");
+			document.querySelector(".page").classList.add("animated");
+			document.querySelector(".page").style.animationDuration = "500ms";
+			document.querySelector(".preloader")?.classList.add("loaded");
+		}, 1000 );
+	})
 	$window.on('load', function () {
 		// Page loader & Page transition
 		if (plugins.preloader.length && !isNoviBuilder) {
@@ -1808,6 +1817,7 @@
 		 * D3 Charts
 		 * @description Enables D3 Charts plugin
 		 */
+		/*
 		if (plugins.d3Charts.length) {
 		}
 
@@ -1884,7 +1894,7 @@
 			};
 
 		d3Charts.push(c3.generate(splineChartObject));
-
+		*/
 		/**
 		 * @module       Magnific Popup
 		 * @author       Dmitry Semenov
